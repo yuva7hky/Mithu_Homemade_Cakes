@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-lightPink text-textMain font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .clay-card {
+    @apply bg-white rounded-3xl shadow-clay-pink border border-white/40;
+  }
+  
+  .clay-button {
+    @apply bg-primary text-white rounded-full shadow-clay-pink hover:shadow-clay-pink-hover transition-all duration-300 font-medium px-6 py-3;
+  }
+  
+  .clay-button-secondary {
+    @apply bg-white text-primary rounded-full shadow-clay-pink hover:shadow-clay-pink-hover transition-all duration-300 font-medium px-6 py-3;
+  }
+  
+  .text-shadow-sm {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF5F8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FCE4EC;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E91E63;
+}
+
+.video-fade-out {
+  animation: fadeOut 1s ease forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; visibility: visible; }
+  to { opacity: 0; visibility: hidden; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
