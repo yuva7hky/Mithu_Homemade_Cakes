@@ -24,21 +24,21 @@ const Navbar = () => {
 
   return (
     <nav className="fixed w-full z-40 bg-white/90 backdrop-blur-md shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           
           {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden w-1/4">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-primary p-2 -ml-2">
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
+          <div className="flex items-center md:hidden flex-shrink-0">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-primary p-2 -ml-2" aria-label="Toggle menu">
+              {isOpen ? <X size={26} /> : <Menu size={26} />}
             </button>
           </div>
 
           {/* Logo & Brand Name - Center on Mobile, Left on Desktop */}
-          <div className="flex flex-1 md:flex-none justify-center md:justify-start items-center overflow-hidden">
-            <Link to="/" className="flex items-center space-x-2 truncate">
-              <img src="/assets/Logo.png" alt="Mithu Homemade Cakes" className="h-10 sm:h-12 md:h-16 w-auto object-contain flex-shrink-0" />
-              <span className="font-bold text-[15px] sm:text-lg md:text-xl text-primary md:tracking-wide truncate">
+          <div className="flex flex-1 md:flex-none justify-center md:justify-start items-center min-w-0 px-1">
+            <Link to="/" className="flex items-center space-x-1.5 sm:space-x-2">
+              <img src="/assets/Logo.png" alt="Mithu Homemade Cakes" className="h-9 sm:h-12 md:h-16 w-auto object-contain flex-shrink-0" />
+              <span className="font-bold text-[13px] min-[360px]:text-[14px] min-[400px]:text-[15px] sm:text-lg md:text-xl text-primary md:tracking-wide whitespace-nowrap">
                 <span className="md:hidden">Mithu Homemade Cakes</span>
                 <span className="hidden md:inline">MITHU HOMEMADE CAKES</span>
               </span>
@@ -61,7 +61,7 @@ const Navbar = () => {
           </div>
 
           {/* Right side icons & FSSAI (Desktop) */}
-          <div className="flex items-center justify-end w-1/4 md:w-auto space-x-4">
+          <div className="flex items-center justify-end flex-shrink-0 space-x-2 sm:space-x-4">
             <div className="hidden md:flex flex-col items-end mr-4">
               <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="flex items-center text-sm font-semibold text-whatsapp hover:text-green-600 transition-colors">
                 <WhatsAppIcon size={16} className="mr-1" />
@@ -73,6 +73,7 @@ const Navbar = () => {
             <button 
               onClick={() => setIsCartOpen(true)}
               className="relative p-2 text-primary hover:bg-softPink rounded-full transition-colors -mr-2 md:mr-0"
+              aria-label="Shopping Cart"
             >
               <ShoppingCart size={24} />
               {cartCount > 0 && (
