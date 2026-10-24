@@ -148,6 +148,51 @@ export const products = [
     customizable: true,
     description: "Creative mini cake with unique lightning effect decoration."
   },
+  {
+    id: "fruit-cake",
+    name: "Fruit Cake",
+    category: "cakes",
+    image: "/assets/Fruit_Cake.jpeg",
+    priceOnRequest: true,
+    customizable: true,
+    description: "Freshly baked rich fruit cake loaded with luscious glazed seasonal fruits."
+  },
+  {
+    id: "theme-cake",
+    name: "Theme Cake",
+    category: "customized",
+    image: "/assets/Theme_Cake.jpeg",
+    priceOnRequest: true,
+    customizable: true,
+    description: "Handcrafted celebration theme cake customized for birthdays and milestones."
+  },
+  {
+    id: "tier-cake",
+    name: "Tier Cake",
+    category: "customized",
+    image: "/assets/Tire_cake.jpeg",
+    priceOnRequest: true,
+    customizable: true,
+    description: "Grand multi-tier designer celebration cake for weddings and milestone occasions."
+  },
+  {
+    id: "customized-cake",
+    name: "Customized Cake",
+    category: "customized",
+    image: "/assets/Customaized_Cake.jpeg",
+    priceOnRequest: true,
+    customizable: true,
+    description: "Bespoke designer cake tailored to your favorite flavors, colors, and celebration theme."
+  },
+  {
+    id: "calendar-brownie",
+    name: "Calendar Brownie",
+    category: "brownies",
+    image: "/assets/calendar_Brownie.jpeg",
+    priceOnRequest: true,
+    customizable: true,
+    description: "Special personalized date celebration brownie slab with handcrafted calendar markings."
+  },
 
   // Brownies
   {

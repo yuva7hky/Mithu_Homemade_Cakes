@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import IntroVideo from './components/IntroVideo';
+import BottomNav from './components/BottomNav';
 
 // Pages
 import Home from './pages/Home';
@@ -35,7 +36,7 @@ function App() {
         <div className={`min-h-screen flex flex-col transition-opacity duration-1000 ${showIntro ? 'opacity-0 h-screen overflow-hidden' : 'opacity-100'}`}>
           <Navbar />
           <CartDrawer />
-          <main className="flex-grow pt-20"> {/* pt-20 to account for fixed navbar */}
+          <main className="flex-grow pt-20 pb-16 md:pb-0"> {/* pt-20 for fixed navbar, pb-16 for mobile bottom nav */}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/product/:id" element={<ProductDetail />} />
@@ -47,6 +48,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
+          <BottomNav />
         </div>
       </Router>
     </CartProvider>

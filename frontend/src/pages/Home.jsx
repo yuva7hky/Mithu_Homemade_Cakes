@@ -1,73 +1,51 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Heart, ShieldCheck, Clock } from 'lucide-react';
+import { Star, Heart, ShieldCheck, Clock } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
+import PopularCakesCarousel from '../components/PopularCakesCarousel';
 import { products } from '../data/products';
 import { WHATSAPP_NUMBER } from '../utils/whatsapp';
 import { WhatsAppIcon } from '../components/Icons';
 
 const Home = () => {
-  const featuredCakes = products.filter(p => p.category === 'cakes').slice(0, 4);
   const featuredCustom = products.filter(p => p.category === 'customized').slice(0, 4);
 
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-softPink to-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-        <div className="max-w-3xl mx-auto mt-4 md:mt-10 fade-in">
-          <span className="inline-block py-1 px-3 rounded-full bg-white text-primary text-xs sm:text-sm font-bold tracking-wide shadow-sm mb-6 border border-primary/20">
+      {/* Hero Section - Compact & Responsive */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-softPink to-white pt-8 pb-10 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+        <div className="max-w-3xl mx-auto mt-1 sm:mt-4 md:mt-8 fade-in">
+          <span className="inline-block py-1 px-3 rounded-full bg-white text-primary text-xs sm:text-sm font-bold tracking-wide shadow-sm mb-3 sm:mb-4 border border-primary/20">
             Freshly Baked with Love
           </span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-textMain mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-textMain mb-3 sm:mb-5 leading-tight tracking-tight">
             Premium Homemade <br className="hidden sm:block" />
             <span className="text-primary">Cakes & Treats</span>
           </h1>
-          <p className="text-lg sm:text-xl text-textMuted mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-lg md:text-xl text-textMuted mb-6 sm:mb-8 max-w-xl mx-auto leading-relaxed px-2">
             Delicious, freshly baked cakes for every occasion. Made to order with premium ingredients and no artificial preservatives.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <Link to="/category/cakes" className="w-full sm:w-auto clay-button text-center">
+          <div className="flex flex-row items-center justify-center gap-3 sm:gap-5 w-full max-w-sm sm:max-w-md mx-auto">
+            <Link to="/category/cakes" className="clay-button text-center flex-1 sm:flex-none py-2.5 sm:py-3.5 px-4 sm:px-8 text-sm sm:text-base font-semibold whitespace-nowrap">
               Explore Cakes
             </Link>
             <a 
               href={`https://wa.me/${WHATSAPP_NUMBER}`} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-full sm:w-auto clay-button-secondary text-center flex justify-center items-center gap-2 border-2 border-transparent"
+              className="clay-button-secondary text-center flex-1 sm:flex-none py-2.5 sm:py-3.5 px-3 sm:px-6 text-sm sm:text-base font-semibold flex justify-center items-center gap-1.5 sm:gap-2 border-2 border-transparent whitespace-nowrap"
             >
-              <WhatsAppIcon size={20} /> Order on WhatsApp
+              <WhatsAppIcon size={18} /> Order on WhatsApp
             </a>
           </div>
         </div>
 
         {/* Decorative elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute top-40 right-10 w-32 h-32 bg-yellow-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute top-12 left-6 w-20 h-20 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob pointer-events-none"></div>
+        <div className="absolute top-24 right-6 w-32 h-32 bg-yellow-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000 pointer-events-none"></div>
       </section>
 
-      {/* Featured Cakes */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="flex justify-between items-end mb-10">
-          <div>
-            <h2 className="text-3xl font-bold text-textMain mb-2">Popular Cakes</h2>
-            <p className="text-textMuted">Our most loved freshly baked cakes</p>
-          </div>
-          <Link to="/category/cakes" className="hidden sm:flex items-center text-primary font-semibold hover:text-deepPink transition-colors">
-            View All <ArrowRight size={18} className="ml-1" />
-          </Link>
-        </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {featuredCakes.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-        
-        <div className="mt-8 text-center sm:hidden">
-          <Link to="/category/cakes" className="inline-flex items-center justify-center px-6 py-3 border border-primary text-primary font-semibold rounded-full hover:bg-softPink transition-colors">
-            View All Cakes
-          </Link>
-        </div>
-      </section>
+      {/* Popular Cakes - Flipkart-style Auto & Manual Moving Horizontal Carousel */}
+      <PopularCakesCarousel />
 
       {/* Shop by Category */}
       <section className="py-16 bg-lightPink">

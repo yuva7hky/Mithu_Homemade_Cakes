@@ -48,3 +48,8 @@ export const generateGeneralEnquiryLink = () => {
   const text = `Hi Mithu Homemade Cakes, I have an enquiry.`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 };
+
+export const generateCakeInquiryWhatsAppLink = (cakeName) => {
+  const text = `Hi Mithu Homemade Cakes! I would like to know more about ${cakeName}. Please share the available sizes, price, and details.`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+};
