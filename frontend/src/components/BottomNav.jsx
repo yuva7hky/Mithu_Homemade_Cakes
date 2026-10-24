@@ -58,12 +58,12 @@ const BottomNav = () => {
 
   return (
     <nav
-      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-softPink shadow-[0_-4px_20px_rgba(233,30,99,0.08)] transition-all duration-300"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-softPink/80 shadow-[0_-4px_20px_rgba(233,30,99,0.06)] transition-all duration-300"
       style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
       aria-label="Mobile Navigation"
       role="navigation"
     >
-      <div className="flex items-center justify-around h-16 max-w-md mx-auto px-2">
+      <div className="flex items-center justify-around h-14 max-w-md mx-auto px-2">
         {navItems.map((item) => {
           const IconComponent = item.icon;
           const active = item.isActive;
@@ -73,20 +73,20 @@ const BottomNav = () => {
               key={item.id}
               onClick={item.action}
               aria-current={active ? 'page' : undefined}
-              className={`flex-1 flex flex-col items-center justify-center py-1 transition-all duration-200 group active:scale-95 focus:outline-none ${
+              className={`flex-1 flex flex-col items-center justify-center py-0.5 transition-all duration-200 group active:scale-95 focus:outline-none ${
                 active ? 'text-primary' : 'text-textMuted hover:text-primary'
               }`}
             >
               <div
                 className={`p-1.5 rounded-full transition-all duration-200 flex items-center justify-center ${
-                  active ? 'bg-softPink text-primary scale-110 shadow-sm' : 'text-textMuted group-hover:bg-softPink/40'
+                  active ? 'border border-primary/30 bg-softPink/50 text-primary scale-105 shadow-sm' : 'text-textMuted/70 group-hover:bg-softPink/30'
                 }`}
               >
-                <IconComponent size={20} strokeWidth={active ? 2.5 : 2} />
+                <IconComponent size={19} strokeWidth={active ? 2.5 : 2} />
               </div>
               <span
                 className={`text-[10px] mt-0.5 tracking-tight transition-all duration-200 ${
-                  active ? 'font-bold text-primary scale-105' : 'font-medium text-textMuted group-hover:text-primary'
+                  active ? 'font-bold text-primary' : 'font-medium text-textMuted group-hover:text-primary'
                 }`}
               >
                 {item.name}

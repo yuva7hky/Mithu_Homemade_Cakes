@@ -15,18 +15,6 @@ import calendarBrownieImg from '../assets/calendar_Brownie.jpeg';
 // Curated popular cakes featuring newly placed cake images and verified favorites
 const POPULAR_CAKES = [
   {
-    id: 'blueberry-cake',
-    name: 'Blueberry Cake',
-    image: blueberryCakeImg,
-    fallbackImage: '/assets/Blueberry_Cake.jpeg',
-    category: 'cakes',
-    badge: 'Popular',
-    basePrice: 350,
-    baseWeight: '0.5 KG',
-    availableWeights: [0.5, 1, 1.5, 2],
-    description: 'Sweet and tangy blueberry cake layered with fresh cream and real blueberry compote.'
-  },
-  {
     id: 'fruit-cake',
     name: 'Fruit Cake',
     image: fruitCakeImg,
@@ -55,6 +43,18 @@ const POPULAR_CAKES = [
     badge: 'Grand',
     priceOnRequest: true,
     description: 'Spectacular multi-tier designer celebration cake crafted for weddings, receptions, and milestone celebrations.'
+  },
+  {
+    id: 'blueberry-cake',
+    name: 'Blueberry Cake',
+    image: blueberryCakeImg,
+    fallbackImage: '/assets/Blueberry_Cake.jpeg',
+    category: 'cakes',
+    badge: 'Popular',
+    basePrice: 350,
+    baseWeight: '0.5 KG',
+    availableWeights: [0.5, 1, 1.5, 2],
+    description: 'Sweet and tangy blueberry cake layered with fresh cream and real blueberry compote.'
   },
   {
     id: 'customized-cake',
@@ -223,21 +223,21 @@ const PopularCakesCarousel = () => {
   return (
     <section 
       id="popular-cakes-section"
-      className="py-8 sm:py-12 bg-gradient-to-b from-white via-softPink/30 to-white relative overflow-hidden border-y border-softPink/50"
+      className="pt-1.5 pb-3 sm:py-8 md:py-12 bg-gradient-to-b from-white via-softPink/30 to-white relative overflow-hidden border-y border-softPink/50"
       aria-label="Popular Cakes Carousel"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex items-end justify-between mb-4 sm:mb-6">
+        <div className="flex items-end justify-between mb-2 sm:mb-5">
           <div>
-            <div className="flex items-center gap-1.5 text-primary text-xs sm:text-sm font-bold uppercase tracking-wider mb-1">
-              <Sparkles size={16} className="text-primary animate-pulse" />
-              <span>Customer Favourites</span>
+            <div className="flex items-center gap-1 text-primary text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-0.5">
+              <Sparkles size={13} className="text-primary animate-pulse" />
+              <span>CUSTOMER FAVOURITES</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-textMain tracking-tight">
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-textMain tracking-tight">
               Popular Cakes
             </h2>
-            <p className="text-textMuted text-xs sm:text-sm md:text-base mt-0.5">
+            <p className="text-textMuted text-[11px] sm:text-sm md:text-base mt-0.5">
               Freshly baked favourites, made with love.
             </p>
           </div>
@@ -281,7 +281,7 @@ const PopularCakesCarousel = () => {
 
         {/* Carousel Container */}
         <div 
-          className="relative -mx-4 px-4 sm:mx-0 sm:px-0"
+          className="relative -mx-3 px-3 sm:mx-0 sm:px-0"
           onMouseEnter={handleUserInteractionStart}
           onMouseLeave={handleUserInteractionEnd}
           onTouchStart={handleUserInteractionStart}
@@ -289,7 +289,7 @@ const PopularCakesCarousel = () => {
         >
           <div
             ref={scrollRef}
-            className="flex gap-3 sm:gap-5 overflow-x-auto scroll-smooth py-3 px-1 snap-x snap-mandatory"
+            className="flex gap-2.5 sm:gap-5 overflow-x-auto scroll-smooth py-1.5 px-1 snap-x snap-mandatory"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
@@ -304,10 +304,10 @@ const PopularCakesCarousel = () => {
                   key={cake.id}
                   data-carousel-card
                   onClick={() => openModal(cake)}
-                  className="snap-start flex-shrink-0 w-[68vw] min-w-[210px] max-w-[250px] sm:w-[42vw] sm:max-w-[260px] md:w-[30vw] md:max-w-[270px] lg:w-[22vw] lg:max-w-[280px] bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-clay-pink hover:shadow-lg transition-all duration-300 flex flex-col justify-between group cursor-pointer border border-white/80 active:scale-[0.98]"
+                  className="snap-start flex-shrink-0 w-[44vw] min-w-[150px] max-w-[185px] sm:w-[28vw] sm:max-w-[240px] md:w-[28vw] md:max-w-[260px] lg:w-[22vw] lg:max-w-[280px] bg-white rounded-2xl p-2 sm:p-3.5 shadow-clay-pink hover:shadow-lg transition-all duration-300 flex flex-col justify-between group cursor-pointer border border-white/80 active:scale-[0.98]"
                 >
                   {/* Image container */}
-                  <div className="relative aspect-square w-full rounded-xl sm:rounded-2xl overflow-hidden bg-softPink/40 mb-2.5 sm:mb-3">
+                  <div className="relative aspect-square w-full rounded-xl sm:rounded-2xl overflow-hidden bg-softPink/40 mb-1.5 sm:mb-2.5">
                     <img
                       src={cake.image}
                       alt={cake.name}
@@ -320,7 +320,7 @@ const PopularCakesCarousel = () => {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     {cake.badge && (
-                      <span className="absolute top-2 left-2 bg-white/90 backdrop-blur-md text-primary text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full shadow-sm">
+                      <span className="absolute top-1.5 left-1.5 bg-white/95 backdrop-blur-md text-primary text-[9px] sm:text-xs font-bold px-1.5 py-0.5 rounded-md shadow-sm">
                         {cake.badge}
                       </span>
                     )}
@@ -328,26 +328,26 @@ const PopularCakesCarousel = () => {
 
                   {/* Card Info */}
                   <div className="flex flex-col flex-grow">
-                    <h3 className="font-bold text-sm sm:text-base text-textMain line-clamp-1 group-hover:text-primary transition-colors">
+                    <h3 className="font-bold text-xs sm:text-base text-textMain line-clamp-1 group-hover:text-primary transition-colors">
                       {cake.name}
                     </h3>
-                    <p className="text-[11px] sm:text-xs text-textMuted line-clamp-1 mt-0.5 mb-2.5">
+                    <p className="text-[9px] sm:text-xs text-textMuted line-clamp-1 mt-0.5 mb-1 sm:mb-2">
                       {cake.description}
                     </p>
 
                     {/* Price and CTA row */}
-                    <div className="mt-auto pt-2 border-t border-softPink/60 flex items-center justify-between gap-1">
+                    <div className="mt-auto pt-1 sm:pt-2 border-t border-softPink/60 flex items-center justify-between gap-1">
                       {hasVerifiedPrice ? (
                         <div className="flex flex-col">
-                          <span className="text-[9px] sm:text-[10px] text-textMuted uppercase font-semibold">Starts from</span>
-                          <span className="font-extrabold text-primary text-sm sm:text-base leading-tight">
+                          <span className="text-[8px] sm:text-[9px] text-textMuted uppercase font-semibold leading-none">Starts from</span>
+                          <span className="font-extrabold text-primary text-xs sm:text-base leading-tight">
                             ₹{cake.basePrice}
                           </span>
                         </div>
                       ) : (
                         <div className="flex flex-col">
-                          <span className="text-[9px] sm:text-[10px] text-textMuted uppercase font-semibold">Custom</span>
-                          <span className="font-bold text-primary text-xs sm:text-sm leading-tight">
+                          <span className="text-[8px] sm:text-[9px] text-textMuted uppercase font-semibold leading-none">Custom</span>
+                          <span className="font-bold text-primary text-[10px] sm:text-xs leading-tight">
                             Price on Request
                           </span>
                         </div>
@@ -358,7 +358,7 @@ const PopularCakesCarousel = () => {
                           e.stopPropagation();
                           openModal(cake);
                         }}
-                        className="bg-softPink text-primary hover:bg-primary hover:text-white px-2.5 sm:px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-bold transition-all duration-200 active:scale-95 shadow-sm whitespace-nowrap"
+                        className="bg-softPink text-primary hover:bg-primary hover:text-white px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-[9px] sm:text-xs font-bold transition-all duration-200 active:scale-95 shadow-sm whitespace-nowrap"
                       >
                         {hasVerifiedPrice ? 'View Details' : 'Get Details'}
                       </button>
@@ -371,10 +371,10 @@ const PopularCakesCarousel = () => {
         </div>
 
         {/* Mobile View All link */}
-        <div className="mt-4 text-center sm:hidden">
+        <div className="mt-2 text-center sm:hidden">
           <Link
             to="/category/cakes"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-primary bg-white px-4 py-2 rounded-full shadow-sm border border-primary/20 hover:bg-softPink"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-primary bg-white px-4 py-1.5 rounded-full shadow-sm border border-primary/20 hover:bg-softPink active:scale-95"
           >
             Explore All Cakes <ArrowRight size={14} />
           </Link>

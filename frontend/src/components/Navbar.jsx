@@ -25,20 +25,20 @@ const Navbar = () => {
   return (
     <nav className="fixed w-full z-40 bg-white/90 backdrop-blur-md shadow-sm">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-14 md:h-20">
           
           {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden flex-shrink-0">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-primary p-2 -ml-2" aria-label="Toggle menu">
-              {isOpen ? <X size={26} /> : <Menu size={26} />}
+            <button onClick={() => setIsOpen(!isOpen)} className="text-primary p-1.5 -ml-1" aria-label="Toggle menu">
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
 
           {/* Logo & Brand Name - Center on Mobile, Left on Desktop */}
           <div className="flex flex-1 md:flex-none justify-center md:justify-start items-center min-w-0 px-1">
             <Link to="/" className="flex items-center space-x-1.5 sm:space-x-2">
-              <img src="/assets/Logo.png" alt="Mithu Homemade Cakes" className="h-9 sm:h-12 md:h-16 w-auto object-contain flex-shrink-0" />
-              <span className="font-bold text-[13px] min-[360px]:text-[14px] min-[400px]:text-[15px] sm:text-lg md:text-xl text-primary md:tracking-wide whitespace-nowrap">
+              <img src="/assets/Logo.png" alt="Mithu Homemade Cakes" className="h-8 sm:h-12 md:h-16 w-auto object-contain flex-shrink-0" />
+              <span className="font-bold text-sm min-[360px]:text-[14px] min-[400px]:text-[15px] sm:text-lg md:text-xl text-primary md:tracking-wide whitespace-nowrap">
                 <span className="md:hidden">Mithu Homemade Cakes</span>
                 <span className="hidden md:inline">MITHU HOMEMADE CAKES</span>
               </span>
@@ -88,7 +88,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-white shadow-lg border-t border-softPink py-4 px-4 flex flex-col space-y-4 fade-in">
+        <div className="md:hidden absolute top-14 md:top-20 left-0 w-full bg-white shadow-lg border-t border-softPink py-4 px-4 flex flex-col space-y-4 fade-in">
           {navLinks.map((link) => (
             <Link
               key={link.name}

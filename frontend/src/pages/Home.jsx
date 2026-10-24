@@ -11,37 +11,39 @@ const Home = () => {
 
   return (
     <div className="w-full">
-      {/* Hero Section - Compact & Responsive */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-softPink to-white pt-8 pb-10 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-        <div className="max-w-3xl mx-auto mt-1 sm:mt-4 md:mt-8 fade-in">
-          <span className="inline-block py-1 px-3 rounded-full bg-white text-primary text-xs sm:text-sm font-bold tracking-wide shadow-sm mb-3 sm:mb-4 border border-primary/20">
+      {/* Hero Section - Compact & Responsive matching Screenshot 2 */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-softPink to-white pt-3 pb-3 sm:py-16 md:py-20 px-3 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+        <div className="max-w-3xl mx-auto mt-0 sm:mt-4 md:mt-8 fade-in">
+          <span className="inline-block py-0.5 px-3 rounded-full bg-white text-primary text-[11px] sm:text-sm font-bold tracking-wide shadow-sm mb-2 sm:mb-4 border border-primary/20">
             Freshly Baked with Love
           </span>
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-textMain mb-3 sm:mb-5 leading-tight tracking-tight">
-            Premium Homemade <br className="hidden sm:block" />
-            <span className="text-primary">Cakes & Treats</span>
+          <h1 className="text-2xl min-[360px]:text-[26px] min-[400px]:text-3xl sm:text-5xl md:text-6xl font-extrabold text-textMain mb-2 sm:mb-4 leading-tight tracking-tight">
+            Premium Homemade <span className="text-primary block sm:inline">Cakes & Treats</span>
           </h1>
-          <p className="text-sm sm:text-lg md:text-xl text-textMuted mb-6 sm:mb-8 max-w-xl mx-auto leading-relaxed px-2">
+          <p className="text-xs sm:text-base md:text-lg text-textMuted mb-3.5 sm:mb-6 max-w-sm sm:max-w-xl mx-auto leading-normal px-1">
             Delicious, freshly baked cakes for every occasion. Made to order with premium ingredients and no artificial preservatives.
           </p>
-          <div className="flex flex-row items-center justify-center gap-3 sm:gap-5 w-full max-w-sm sm:max-w-md mx-auto">
-            <Link to="/category/cakes" className="clay-button text-center flex-1 sm:flex-none py-2.5 sm:py-3.5 px-4 sm:px-8 text-sm sm:text-base font-semibold whitespace-nowrap">
+          <div className="flex flex-row items-center justify-center gap-2.5 sm:gap-5 w-full max-w-xs sm:max-w-md mx-auto px-1">
+            <Link 
+              to="/category/cakes" 
+              className="bg-primary text-white rounded-full shadow-md hover:shadow-lg font-bold text-xs sm:text-base px-3.5 py-2 sm:px-8 sm:py-3.5 transition-all text-center whitespace-nowrap flex-1 sm:flex-none flex items-center justify-center active:scale-95"
+            >
               Explore Cakes
             </Link>
             <a 
               href={`https://wa.me/${WHATSAPP_NUMBER}`} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="clay-button-secondary text-center flex-1 sm:flex-none py-2.5 sm:py-3.5 px-3 sm:px-6 text-sm sm:text-base font-semibold flex justify-center items-center gap-1.5 sm:gap-2 border-2 border-transparent whitespace-nowrap"
+              className="bg-white text-primary border border-primary/20 rounded-full shadow-sm hover:shadow-md font-bold text-xs sm:text-base px-3 py-2 sm:px-6 sm:py-3.5 transition-all text-center whitespace-nowrap flex-1 sm:flex-none flex items-center justify-center gap-1.5 active:scale-95"
             >
-              <WhatsAppIcon size={18} /> Order on WhatsApp
+              <WhatsAppIcon size={16} /> Order on WhatsApp
             </a>
           </div>
         </div>
 
         {/* Decorative elements */}
-        <div className="absolute top-12 left-6 w-20 h-20 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob pointer-events-none"></div>
-        <div className="absolute top-24 right-6 w-32 h-32 bg-yellow-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000 pointer-events-none"></div>
+        <div className="absolute top-4 left-4 w-16 h-16 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob pointer-events-none"></div>
+        <div className="absolute top-10 right-4 w-24 h-24 bg-yellow-100 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob animation-delay-2000 pointer-events-none"></div>
       </section>
 
       {/* Popular Cakes - Flipkart-style Auto & Manual Moving Horizontal Carousel */}

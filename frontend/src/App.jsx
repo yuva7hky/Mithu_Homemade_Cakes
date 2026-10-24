@@ -36,7 +36,7 @@ function App() {
         <div className={`min-h-screen flex flex-col transition-opacity duration-1000 ${showIntro ? 'opacity-0 h-screen overflow-hidden' : 'opacity-100'}`}>
           <Navbar />
           <CartDrawer />
-          <main className="flex-grow pt-20 pb-16 md:pb-0"> {/* pt-20 for fixed navbar, pb-16 for mobile bottom nav */}
+          <main className="flex-grow pt-14 md:pt-20 pb-16 md:pb-0"> {/* pt-14 mobile / pt-20 desktop for fixed navbar, pb-16 for mobile bottom nav */}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/product/:id" element={<ProductDetail />} />
