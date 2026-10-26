@@ -3,14 +3,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
-import { generateSingleProductWhatsAppLink, generateCustomizedEnquiryLink } from '../utils/whatsapp';
+import { generateCustomizedEnquiryLink } from '../utils/whatsapp';
 import { WeightSelector, QuantitySelector } from '../components/Selectors';
 import { WhatsAppIcon } from '../components/Icons';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { addToCart } = useCart();
+  const { addToCart, openCheckout } = useCart();
   
   const product = products.find(p => p.id === id);
   
@@ -43,7 +43,15 @@ const ProductDetail = () => {
     if (isCustomized) {
       window.open(generateCustomizedEnquiryLink(product), '_blank');
     } else {
-      window.open(generateSingleProductWhatsAppLink(product, selectedWeight, quantity, price), '_blank');
+      openCheckout([{
+        id: product.id,
+        name: product.name,
+        weight: selectedWeight,
+        quantity,
+        price,
+        image: product.image,
+        category: product.category
+      }], price * quantity, false);
     }
   };
 

@@ -51,6 +51,32 @@ export const CartProvider = ({ children }) => {
   const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
   const cartCount = cart.reduce((count, item) => count + item.quantity, 0);
 
+  const [checkoutData, setCheckoutData] = useState({
+    isOpen: false,
+    items: [],
+    subtotal: 0,
+    isCartCheckout: false,
+  });
+
+  const openCheckout = (items, subtotal, isCartCheckout = false) => {
+    const orderItems = items || [];
+    const calculatedSubtotal = subtotal !== undefined && subtotal !== null
+      ? subtotal
+      : orderItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+
+    setCheckoutData({
+      isOpen: true,
+      items: orderItems,
+      subtotal: calculatedSubtotal,
+      isCartCheckout
+    });
+    setIsCartOpen(false);
+  };
+
+  const closeCheckout = () => {
+    setCheckoutData(prev => ({ ...prev, isOpen: false }));
+  };
+
   return (
     <CartContext.Provider value={{
       cart,
@@ -61,7 +87,10 @@ export const CartProvider = ({ children }) => {
       cartTotal,
       cartCount,
       isCartOpen,
-      setIsCartOpen
+      setIsCartOpen,
+      checkoutData,
+      openCheckout,
+      closeCheckout
     }}>
       {children}
     </CartContext.Provider>

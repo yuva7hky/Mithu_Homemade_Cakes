@@ -1,18 +1,14 @@
 import { X, Minus, Plus, Trash2 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
-import { generateCartWhatsAppLink } from '../utils/whatsapp';
-import { WhatsAppIcon } from './Icons';
 
 const CartDrawer = () => {
-  const { isCartOpen, setIsCartOpen, cart, updateQuantity, removeFromCart, cartTotal, clearCart } = useCart();
+  const { isCartOpen, setIsCartOpen, cart, updateQuantity, removeFromCart, cartTotal, openCheckout } = useCart();
 
   if (!isCartOpen) return null;
 
-  const handleWhatsAppOrder = () => {
-    const link = generateCartWhatsAppLink(cart, cartTotal);
-    window.open(link, '_blank');
-    clearCart(); // Optional: clear cart after sending order
-    setIsCartOpen(false);
+  const handleProceedToCheckout = () => {
+    if (cart.length === 0) return;
+    openCheckout(cart, cartTotal, true);
   };
 
   return (
@@ -81,13 +77,13 @@ const CartDrawer = () => {
               <div className="border-t border-softPink bg-white p-4 sm:p-6 space-y-4">
                 <div className="flex justify-between text-base font-semibold text-textMain">
                   <p>Subtotal</p>
-                  <p>₹{cartTotal}</p>
+                  <p className="font-bold text-primary">₹{cartTotal}</p>
                 </div>
                 <button 
-                  onClick={handleWhatsAppOrder}
-                  className="w-full flex items-center justify-center clay-button bg-whatsapp shadow-none hover:shadow-none hover:bg-green-600"
+                  onClick={handleProceedToCheckout}
+                  className="w-full flex items-center justify-center clay-button bg-primary hover:bg-deepPink text-white shadow-clay-pink hover:shadow-clay-pink-hover font-bold py-3.5"
                 >
-                  <WhatsAppIcon size={20} className="mr-2" /> Order on WhatsApp
+                  Proceed to Checkout
                 </button>
               </div>
             )}
