@@ -118,3 +118,9 @@ export const generateCakeInquiryWhatsAppLink = (cakeName) => {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 };
 
+export const SURPRISE_COMBO_WHATSAPP_MESSAGE = "Hi Mithu Homemade Cakes! 🎁 I'm interested in your Surprise Combo. I would like a customized combination of cake + bouquet + gift as my wish. Please share the available options and pricing. Thank you! 💗";
+
+export const generateSurpriseComboWhatsAppLink = () => {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(SURPRISE_COMBO_WHATSAPP_MESSAGE)}`;
+};
+

@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
-import { generateCustomizedEnquiryLink } from '../utils/whatsapp';
+import { generateCustomizedEnquiryLink, generateSurpriseComboWhatsAppLink } from '../utils/whatsapp';
 
 const ProductCard = ({ product }) => {
   const isCustomized = product.priceOnRequest;
+  const isSurprise = product.isSurpriseCombo;
 
   const handleCustomEnquiry = (e) => {
     e.preventDefault();
-    const link = generateCustomizedEnquiryLink(product);
-    window.open(link, '_blank');
+    const link = isSurprise ? generateSurpriseComboWhatsAppLink() : generateCustomizedEnquiryLink(product);
+    window.open(link, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -44,9 +45,9 @@ const ProductCard = ({ product }) => {
             {isCustomized ? (
               <button 
                 onClick={handleCustomEnquiry}
-                className="bg-whatsapp text-white px-3 py-1.5 rounded-full text-xs font-semibold hover:bg-green-600 transition-colors shadow-sm flex items-center"
+                className={`${isSurprise ? 'bg-primary hover:bg-deepPink text-white shadow-md' : 'bg-whatsapp hover:bg-green-600 text-white shadow-sm'} px-3.5 py-1.5 rounded-full text-xs font-bold transition-all flex items-center active:scale-95`}
               >
-                Get Details
+                {isSurprise ? 'Get Surprise Details' : 'Get Details'}
               </button>
             ) : (
               <span className="bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-semibold group-hover:bg-primary group-hover:text-white transition-colors">

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
-import { generateCustomizedEnquiryLink } from '../utils/whatsapp';
+import { generateCustomizedEnquiryLink, generateSurpriseComboWhatsAppLink } from '../utils/whatsapp';
 import { WeightSelector, QuantitySelector } from '../components/Selectors';
 import { WhatsAppIcon } from '../components/Icons';
 
@@ -39,9 +39,13 @@ const ProductDetail = () => {
     setTimeout(() => setAddedAnimation(false), 2000);
   };
 
+  const isSurprise = product.isSurpriseCombo;
+
   const handleBuyNow = () => {
-    if (isCustomized) {
-      window.open(generateCustomizedEnquiryLink(product), '_blank');
+    if (isSurprise) {
+      window.open(generateSurpriseComboWhatsAppLink(), '_blank', 'noopener,noreferrer');
+    } else if (isCustomized) {
+      window.open(generateCustomizedEnquiryLink(product), '_blank', 'noopener,noreferrer');
     } else {
       openCheckout([{
         id: product.id,
@@ -132,9 +136,9 @@ const ProductDetail = () => {
               
               <button 
                 onClick={handleBuyNow}
-                className={`clay-button bg-whatsapp shadow-none hover:shadow-none hover:bg-green-600 w-full flex justify-center items-center ${!isCustomized ? 'sm:w-1/2' : ''}`}
+                className={`clay-button ${isSurprise ? 'bg-primary hover:bg-deepPink text-white shadow-lg' : 'bg-whatsapp hover:bg-green-600 text-white'} shadow-none hover:shadow-none w-full flex justify-center items-center ${!isCustomized ? 'sm:w-1/2' : ''}`}
               >
-                <WhatsAppIcon size={20} className="mr-2" /> {isCustomized ? 'Get Details on WhatsApp' : 'Buy Now'}
+                <WhatsAppIcon size={20} className="mr-2" /> {isSurprise ? 'Get Surprise Details' : isCustomized ? 'Get Details on WhatsApp' : 'Buy Now'}
               </button>
             </div>
           </div>

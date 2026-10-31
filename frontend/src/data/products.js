@@ -113,6 +113,16 @@ export const products = [
 
   // Customized Cakes
   {
+    id: "surprise-combo",
+    name: "Surprise Combo 🎁",
+    category: "customized",
+    image: "/assets/Suprise_Combo.jpeg",
+    priceOnRequest: true,
+    customizable: true,
+    isSurpriseCombo: true,
+    description: "Cake + Bouquet + Gift as your wish 💝"
+  },
+  {
     id: "car-shape-chocolate-cake",
     name: "Car Shape Chocolate Cake",
     category: "customized",

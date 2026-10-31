@@ -63,3 +63,59 @@
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* Surprise Combo Modal & Promotional Animations */
+@keyframes popupIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-popup-in {
+  animation: popupIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-gentle-float {
+  animation: gentleFloat 3s ease-in-out infinite;
+}
+
+@keyframes confettiFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) rotate(10deg) scale(1.08);
+  }
+}
+
+.animate-confetti-float {
+  animation: confettiFloat 2.6s ease-in-out infinite;
+}
+
+.animate-confetti-float-delayed {
+  animation: confettiFloat 3.2s ease-in-out 0.9s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-popup-in,
+  .animate-gentle-float,
+  .animate-confetti-float,
+  .animate-confetti-float-delayed {
+    animation: none !important;
+    transition: none !important;
+  }
+}

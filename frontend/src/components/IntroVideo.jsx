@@ -1,35 +1,39 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 
 const IntroVideo = ({ onComplete }) => {
   const [isFading, setIsFading] = useState(false);
   const videoRef = useRef(null);
+  const completedRef = useRef(false);
 
-  useEffect(() => {
-    // Attempt play immediately
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Autoplay policy handled silently
-      });
-    }
-
-    // Failsafe timer (video is ~4.9s long)
-    const timer = setTimeout(() => {
-      handleComplete();
-    }, 5500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleComplete = () => {
+  const handleComplete = useCallback(() => {
+    if (completedRef.current) return;
+    completedRef.current = true;
     setIsFading(true);
     setTimeout(() => {
       onComplete();
-    }, 700); // Smooth 700ms fade out
-  };
+    }, 600); // Smooth 600ms fade out
+  }, [onComplete]);
+
+  useEffect(() => {
+    // Attempt play immediately
+    const video = videoRef.current;
+    if (video) {
+      video.play().catch(() => {
+        // Autoplay handled silently
+      });
+    }
+
+    // Failsafe timer (video is 4.9s, 7.5s allows complete playback even if buffering occurs)
+    const timer = setTimeout(() => {
+      handleComplete();
+    }, 7500);
+
+    return () => clearTimeout(timer);
+  }, [handleComplete]);
 
   return (
     <div 
-      className={`fixed inset-0 z-50 flex items-center justify-center overflow-hidden transition-opacity duration-700 select-none ${
+      className={`fixed inset-0 z-50 flex items-center justify-center overflow-hidden transition-opacity duration-600 select-none ${
         isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
       style={{
@@ -45,7 +49,6 @@ const IntroVideo = ({ onComplete }) => {
         playsInline 
         onEnded={handleComplete}
       >
-        <source src="/assets/intro_video.mp4" type="video/mp4" />
         <source src="/assets/Intro_Video.mp4" type="video/mp4" />
       </video>
     </div>
@@ -53,4 +56,3 @@ const IntroVideo = ({ onComplete }) => {
 };
 
 export default IntroVideo;
-
